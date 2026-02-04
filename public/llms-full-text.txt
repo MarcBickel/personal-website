@@ -1,0 +1,64 @@
+# Marc Bickel - Full Content
+
+## About
+
+Marc Bickel
+
+I build things. Currently CTO at Fume.
+Previously: consulting, Web3 research, EPFL.
+Based in Switzerland.
+
+## Now (Updated: February 2026)
+
+Building Fume — helping companies navigate their digital transformation.
+
+Learning: Italian, systems thinking
+
+Reading: Currently working through my backlog
+
+Thinking about: How AI changes the way we build software
+
+## Projects
+
+### Fume (2022–Present)
+CTO. Building the company and leading the technical vision.
+
+### GAN Photography Research
+Published paper on predicting photographers' retouching styles using GANs.
+
+### Lauzhack 2018
+2nd place in the Crédit Suisse Challenge.
+
+### Earlier work
+Cryptoro · 5w155 · Nothing AG
+
+## Background
+
+### Education
+- EPFL Computer Science (Bachelor + Master)
+- Specialization: Signal, Images, Interfaces
+
+### Career
+- CTO at Fume (2022-Present)
+- AWK Group/Eraneos (2021-2022) - Consulting
+- Cryptoro (2021-2023) - Web3 research
+- 5w155 (2021-2023) - Tech lead
+- Nothing AG (2020-2021) - Internship + thesis
+- EPFL Teaching Assistant (2016-2020)
+
+### Languages
+- Native: French, Catalan
+- Fluent: English, Spanish, German
+- Learning: Italian, Russian
+
+### Highlights
+- 1st place Experience Design (EPFL)
+- 2nd place Lauzhack Credit Suisse Challenge
+- EPFL Sports Prize finalist
+- GAN paper publication
+
+## Contact
+
+Email: marcbickel@icloud.com
+LinkedIn: linkedin.com/in/marcbickel
+GitHub: github.com/marcbickel

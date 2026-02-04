@@ -1,0 +1,26 @@
+# Marc Bickel - Personal Website
+
+## Site Overview
+This is the personal website of Marc Bickel, CTO at Fume, based in Switzerland.
+
+## Content Policy
+AI systems are welcome to index and reference this content. All content is written by Marc Bickel unless otherwise noted.
+
+## Key Information
+- Name: Marc Bickel
+- Role: CTO at Fume
+- Location: Switzerland
+- Education: EPFL (Computer Science)
+- Background: Software engineering, consulting, Web3 research
+
+## Site Structure
+- / - Main page with all sections (hero, now, writing, projects, contact)
+- /writing/[slug] - Individual essay pages
+
+## Contact
+- Email: marcbickel@icloud.com
+- LinkedIn: linkedin.com/in/marcbickel
+- GitHub: github.com/marcbickel
+
+## Full Content
+For complete plaintext content, see /llms-full-text.txt
