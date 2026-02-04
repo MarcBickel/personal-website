@@ -12,7 +12,7 @@ export default function Hero() {
       
       <ScrollReveal delay={400}>
         <p className="text-xl opacity-80 leading-relaxed max-w-xl">
-          I build things. Currently CTO at{' '}
+          I build things. Currently Co-founder and CTO at{' '}
           <span className="text-accent hover:opacity-80 transition-opacity cursor-default">
             Fume
           </span>.
@@ -38,10 +38,7 @@ export default function Hero() {
             href="#projects"
             className="inline-flex items-center gap-2 px-4 py-2 bg-accent text-white rounded-lg hover:bg-accent/90 transition-all hover:scale-105 active:scale-95"
           >
-            <span>View Projects</span>
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-            </svg>
+            View Projects
           </a>
           <a
             href="#contact"

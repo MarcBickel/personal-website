@@ -2,7 +2,7 @@ import { ScrollReveal } from '@/components/ScrollReveal'
 
 export default function Contact() {
   const links = [
-    { name: 'LinkedIn', url: 'https://linkedin.com/in/marcbickel' },
+    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/marc-bickel/' },
     { name: 'GitHub', url: 'https://github.com/marcbickel' },
   ]
 
