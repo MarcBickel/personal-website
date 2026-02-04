@@ -45,19 +45,6 @@ const projects = [
     description: 'Panzer Grenadier. Swiss Army service in the Special Forces.',
     tags: ['Military', 'Leadership', 'Discipline'],
   },
-  {
-    title: 'GAN Photography Research',
-    period: '2019',
-    description: 'Published paper on predicting photographers\' retouching styles using GANs.',
-    tags: ['Python', 'PyTorch', 'Computer Vision'],
-    link: 'https://arxiv.org/abs/2006.02921',
-  },
-  {
-    title: 'Lauzhack 2018',
-    period: '2018',
-    description: '2nd place in the Crédit Suisse Challenge.',
-    tags: ['Hackathon', 'FinTech'],
-  },
 ]
 
 export default function Projects() {

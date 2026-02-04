@@ -1,13 +1,13 @@
 import { ScrollReveal } from '@/components/ScrollReveal'
 
 const languages = [
-  { name: 'French', level: 'Mother Tongue', proficiency: 100 },
-  { name: 'Catalan', level: 'Mother Tongue', proficiency: 100 },
-  { name: 'English', level: 'Fluent', proficiency: 95 },
-  { name: 'Spanish', level: 'Fluent', proficiency: 90 },
-  { name: 'German', level: 'Professional', proficiency: 80 },
-  { name: 'Italian', level: 'Learning', proficiency: 40 },
-  { name: 'Russian', level: 'Learning', proficiency: 20 },
+  { name: 'French', flag: '🇫🇷', level: 'Mother Tongue', proficiency: 100 },
+  { name: 'Catalan', flag: '🇦🇩', level: 'Mother Tongue', proficiency: 100 },
+  { name: 'English', flag: '🇬🇧', level: 'Fluent', proficiency: 95 },
+  { name: 'Spanish', flag: '🇪🇸', level: 'Fluent', proficiency: 90 },
+  { name: 'German', flag: '🇩🇪', level: 'Professional', proficiency: 80 },
+  { name: 'Italian', flag: '🇮🇹', level: 'Learning', proficiency: 40 },
+  { name: 'Russian', flag: '🇷🇺', level: 'Learning', proficiency: 20 },
 ]
 
 export default function Languages() {
@@ -24,7 +24,10 @@ export default function Languages() {
           <ScrollReveal key={lang.name} delay={index * 100}>
             <div className="p-4 rounded-lg bg-foreground/5 border border-foreground/10 hover:border-accent/30 transition-colors">
               <div className="flex justify-between items-center mb-2">
-                <span className="font-semibold">{lang.name}</span>
+                <span className="font-semibold flex items-center gap-2">
+                  <span>{lang.flag}</span>
+                  <span>{lang.name}</span>
+                </span>
                 <span className="text-sm opacity-60 font-mono">{lang.level}</span>
               </div>
               <div className="w-full h-2 bg-foreground/10 rounded-full overflow-hidden">
