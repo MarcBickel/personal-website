@@ -18,14 +18,14 @@ export default function Contact() {
         <div className="p-6 rounded-lg bg-foreground/5 border border-foreground/10 font-mono">
           <div className="flex items-center gap-2 mb-4">
             <span className="text-accent">$</span>
-            <span className="opacity-80">email marcbickel@icloud.com</span>
+            <span className="opacity-80">email me@marcbickel.ch</span>
           </div>
           
           <a
-            href="mailto:marcbickel@icloud.com"
+            href="mailto:me@marcbickel.ch"
             className="block text-lg hover:text-accent transition-colors ml-6"
           >
-            marcbickel@icloud.com
+            me@marcbickel.ch
           </a>
         </div>
       </ScrollReveal>
