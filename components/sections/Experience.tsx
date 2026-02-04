@@ -57,7 +57,6 @@ export default function Experience() {
               period={exp.period}
               description={exp.description}
               tags={exp.tags}
-              link={exp.link}
             />
           </ScrollReveal>
         ))}
