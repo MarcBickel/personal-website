@@ -1,35 +1,50 @@
+import { ScrollReveal } from '@/components/ScrollReveal'
+
 export default function Contact() {
+  const links = [
+    { name: 'LinkedIn', url: 'https://linkedin.com/in/marcbickel' },
+    { name: 'GitHub', url: 'https://github.com/marcbickel' },
+  ]
+
   return (
     <section id="contact" className="py-16 border-t border-foreground/10">
-      <h2 className="text-2xl font-semibold mb-6">Get in touch</h2>
+      <ScrollReveal>
+        <h2 className="text-2xl font-semibold mb-8 font-mono">
+          <span className="text-accent">#</span> Get in touch
+        </h2>
+      </ScrollReveal>
 
-      <p className="opacity-80 mb-4">
-        <a
-          href="mailto:marcbickel@icloud.com"
-          className="text-accent hover:opacity-70 transition-opacity"
-        >
-          marcbickel@icloud.com
-        </a>
-      </p>
+      <ScrollReveal delay={200}>
+        <div className="p-6 rounded-lg bg-foreground/5 border border-foreground/10 font-mono">
+          <div className="flex items-center gap-2 mb-4">
+            <span className="text-accent">$</span>
+            <span className="opacity-80">email marcbickel@icloud.com</span>
+          </div>
+          
+          <a
+            href="mailto:marcbickel@icloud.com"
+            className="block text-lg hover:text-accent transition-colors ml-6"
+          >
+            marcbickel@icloud.com
+          </a>
+        </div>
+      </ScrollReveal>
 
-      <div className="flex gap-6">
-        <a
-          href="https://linkedin.com/in/marcbickel"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="opacity-80 hover:opacity-100 hover:text-accent transition-all"
-        >
-          LinkedIn
-        </a>
-        <a
-          href="https://github.com/marcbickel"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="opacity-80 hover:opacity-100 hover:text-accent transition-all"
-        >
-          GitHub
-        </a>
-      </div>
+      <ScrollReveal delay={400}>
+        <div className="flex gap-4 mt-6">
+          {links.map((link) => (
+            <a
+              key={link.name}
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2 rounded-lg border border-foreground/20 hover:border-accent hover:text-accent transition-all hover:scale-105"
+            >
+              {link.name}
+            </a>
+          ))}
+        </div>
+      </ScrollReveal>
     </section>
   )
 }

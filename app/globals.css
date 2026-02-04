@@ -23,6 +23,34 @@ body {
   color: var(--foreground);
 }
 
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(37, 99, 235, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(37, 99, 235, 0.5);
+}
+
+/* Selection color */
+::selection {
+  background: rgba(37, 99, 235, 0.3);
+}
+
+/* Smooth transitions for theme switching */
+*, *::before, *::after {
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
 /* Prose styles for MDX content */
 .prose {
   max-width: 65ch;
@@ -58,6 +86,7 @@ body {
   color: var(--accent);
   text-decoration: underline;
   text-underline-offset: 2px;
+  transition: opacity 0.2s ease;
 }
 
 .prose a:hover {
@@ -114,4 +143,23 @@ body {
   border: none;
   border-top: 1px solid rgba(127, 127, 127, 0.3);
   margin: 2rem 0;
+}
+
+/* Animated gradient text */
+@keyframes gradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #2563eb, #7c3aed, #2563eb);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient 3s ease infinite;
 }
