@@ -36,7 +36,7 @@ export default function Nav() {
 
   return (
     <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-foreground/10">
-      <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div className="max-w-2xl mx-auto px-6 py-4 flex items-center justify-between">
         <a 
           href="#top" 
           className="font-mono font-bold text-lg hover:text-accent transition-colors"
