@@ -7,6 +7,7 @@ const projects = [
     period: '2022–Present',
     description: 'CTO. Building the company and leading the technical vision.',
     tags: ['TypeScript', 'React', 'Node.js'],
+    link: 'https://fume.finance',
   },
   {
     title: 'GAN Photography Research',
@@ -42,6 +43,7 @@ export default function Projects() {
               period={project.period}
               description={project.description}
               tags={project.tags}
+              link={project.link}
             />
           </ScrollReveal>
         ))}

@@ -5,11 +5,19 @@ interface TerminalCardProps {
   period?: string
   description: string
   tags?: string[]
+  link?: string
 }
 
-export function TerminalCard({ title, period, description, tags = [] }: TerminalCardProps) {
+export function TerminalCard({ title, period, description, tags = [], link }: TerminalCardProps) {
+  const CardWrapper = link ? 'a' : 'div'
+  
   return (
-    <div className="group relative bg-foreground/5 rounded-lg overflow-hidden border border-foreground/10 hover:border-accent/50 transition-colors duration-300">
+    <CardWrapper
+      href={link}
+      target={link ? "_blank" : undefined}
+      rel={link ? "noopener noreferrer" : undefined}
+      className={`group relative bg-foreground/5 rounded-lg overflow-hidden border border-foreground/10 hover:border-accent/50 transition-all duration-300 ${link ? 'cursor-pointer hover:scale-[1.01]' : ''}`}
+    >
       {/* Terminal header */}
       <div className="flex items-center gap-2 px-4 py-3 bg-foreground/5 border-b border-foreground/10">
         <div className="flex gap-1.5">
@@ -20,6 +28,13 @@ export function TerminalCard({ title, period, description, tags = [] }: Terminal
         <div className="ml-4 text-xs opacity-50 font-mono">
           {title.toLowerCase().replace(/\s+/g, '-')}.md
         </div>
+        {link && (
+          <div className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity">
+            <svg className="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </div>
+        )}
       </div>
       
       {/* Terminal content */}
@@ -59,6 +74,6 @@ export function TerminalCard({ title, period, description, tags = [] }: Terminal
           <span className="animate-pulse">_</span>
         </div>
       </div>
-    </div>
+    </CardWrapper>
   )
 }

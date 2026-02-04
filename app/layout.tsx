@@ -61,7 +61,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
           <AnimatedBackground />
           <Nav />
-          <main className="max-w-2xl mx-auto px-6 py-12 relative z-10">
+          <main className="max-w-5xl mx-auto px-6 py-12 relative z-10">
             {children}
           </main>
         </ThemeProvider>
