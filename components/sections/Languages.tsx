@@ -1,10 +1,13 @@
 import { ScrollReveal } from '@/components/ScrollReveal'
 
 const languages = [
-  { name: 'French', level: 'Native', proficiency: 100 },
+  { name: 'French', level: 'Mother Tongue', proficiency: 100 },
+  { name: 'Catalan', level: 'Mother Tongue', proficiency: 100 },
   { name: 'English', level: 'Fluent', proficiency: 95 },
+  { name: 'Spanish', level: 'Fluent', proficiency: 90 },
   { name: 'German', level: 'Professional', proficiency: 80 },
   { name: 'Italian', level: 'Learning', proficiency: 40 },
+  { name: 'Russian', level: 'Learning', proficiency: 20 },
 ]
 
 export default function Languages() {
