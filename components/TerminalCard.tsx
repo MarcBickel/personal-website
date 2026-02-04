@@ -18,10 +18,10 @@ export function TerminalCard({ title, period, description, tags = [], link }: Te
       href={link}
       target={link ? "_blank" : undefined}
       rel={link ? "noopener noreferrer" : undefined}
-      className={`block group ${link ? 'cursor-pointer' : ''}`}
+      className={`block group rounded-lg border border-foreground/20 overflow-hidden hover:border-accent/50 transition-colors ${link ? 'cursor-pointer' : ''}`}
     >
       {/* Terminal header with dots */}
-      <div className="flex items-center gap-2 mb-3">
+      <div className="flex items-center gap-2 px-4 py-3 bg-foreground/5 border-b border-foreground/10">
         <div className="flex gap-1.5">
           <div className="w-3 h-3 rounded-full bg-red-500/80" />
           <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
@@ -40,7 +40,7 @@ export function TerminalCard({ title, period, description, tags = [], link }: Te
       </div>
       
       {/* Terminal content */}
-      <div className="font-mono text-sm">
+      <div className="p-4 font-mono text-sm">
         <div className="flex items-start gap-2 mb-3 opacity-60">
           <span className="text-accent">$</span>
           <span>cat {filename}/README.md</span>
