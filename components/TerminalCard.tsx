@@ -11,22 +11,24 @@ interface TerminalCardProps {
 export function TerminalCard({ title, period, description, tags = [], link }: TerminalCardProps) {
   const CardWrapper = link ? 'a' : 'div'
   
+  const filename = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
+  
   return (
     <CardWrapper
       href={link}
       target={link ? "_blank" : undefined}
       rel={link ? "noopener noreferrer" : undefined}
-      className={`group relative bg-foreground/5 rounded-lg overflow-hidden border border-foreground/10 hover:border-accent/50 transition-all duration-300 ${link ? 'cursor-pointer hover:scale-[1.01]' : ''}`}
+      className={`block group ${link ? 'cursor-pointer' : ''}`}
     >
-      {/* Terminal header */}
-      <div className="flex items-center gap-2 px-4 py-3 bg-foreground/5 border-b border-foreground/10">
+      {/* Terminal header with dots */}
+      <div className="flex items-center gap-2 mb-3">
         <div className="flex gap-1.5">
           <div className="w-3 h-3 rounded-full bg-red-500/80" />
           <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
           <div className="w-3 h-3 rounded-full bg-green-500/80" />
         </div>
-        <div className="ml-4 text-xs opacity-50 font-mono">
-          {title.toLowerCase().replace(/\s+/g, '-')}.md
+        <div className="ml-3 text-xs opacity-40 font-mono">
+          {filename}.md
         </div>
         {link && (
           <div className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity">
@@ -38,14 +40,14 @@ export function TerminalCard({ title, period, description, tags = [], link }: Te
       </div>
       
       {/* Terminal content */}
-      <div className="p-4 font-mono text-sm">
-        <div className="flex items-start gap-2 mb-3">
-          <span className="text-accent opacity-60">$</span>
-          <span className="opacity-80">cat {title.toLowerCase().replace(/\s+/g, '-')}/README.md</span>
+      <div className="font-mono text-sm">
+        <div className="flex items-start gap-2 mb-3 opacity-60">
+          <span className="text-accent">$</span>
+          <span>cat {filename}/README.md</span>
         </div>
         
         <div className="pl-4 border-l-2 border-accent/20">
-          <h3 className="text-lg font-semibold mb-1 group-hover:text-accent transition-colors">
+          <h3 className="text-lg font-semibold mb-2 group-hover:text-accent transition-colors">
             {title}
             {period && (
               <span className="font-normal opacity-50 ml-2 text-sm">
@@ -53,10 +55,10 @@ export function TerminalCard({ title, period, description, tags = [], link }: Te
               </span>
             )}
           </h3>
-          <p className="opacity-70 leading-relaxed">{description}</p>
+          <p className="opacity-80 leading-relaxed mb-3">{description}</p>
           
           {tags.length > 0 && (
-            <div className="flex flex-wrap gap-2 mt-3">
+            <div className="flex flex-wrap gap-2">
               {tags.map((tag) => (
                 <span
                   key={tag}
