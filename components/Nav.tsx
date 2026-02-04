@@ -5,9 +5,9 @@ import ThemeToggle from './ThemeToggle'
 
 const navItems = [
   { label: 'Now', href: '#now' },
-  { label: 'Languages', href: '#languages' },
-  { label: 'Writing', href: '#writing' },
+  { label: 'Experience', href: '#experience' },
   { label: 'Projects', href: '#projects' },
+  { label: 'Writing', href: '#writing' },
   { label: 'Education', href: '#education' },
   { label: 'Contact', href: '#contact' },
 ]
