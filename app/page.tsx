@@ -3,6 +3,7 @@ import Now from '@/components/sections/Now'
 import Languages from '@/components/sections/Languages'
 import Writing from '@/components/sections/Writing'
 import Projects from '@/components/sections/Projects'
+import Education from '@/components/sections/Education'
 import Contact from '@/components/sections/Contact'
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
       <Languages />
       <Writing />
       <Projects />
+      <Education />
       <Contact />
     </>
   )
