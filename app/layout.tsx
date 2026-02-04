@@ -6,11 +6,11 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: 'Marc Bickel',
-  description: 'I build things. Currently CTO at Fume.',
+  description: 'I like building things and solving hard problems. Co-founder and CTO at Fume.',
   metadataBase: new URL('https://marcbickel.ch'),
   openGraph: {
     title: 'Marc Bickel',
-    description: 'I build things. Currently CTO at Fume.',
+    description: 'I like building things and solving hard problems. Co-founder and CTO at Fume.',
     url: 'https://marcbickel.ch',
     siteName: 'Marc Bickel',
     locale: 'en_US',
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary',
     title: 'Marc Bickel',
-    description: 'I build things. Currently CTO at Fume.',
+    description: 'I like building things and solving hard problems. Co-founder and CTO at Fume.',
   },
   robots: {
     index: true,
@@ -31,10 +31,10 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: 'Marc Bickel',
-  jobTitle: 'CTO at Fume',
+  jobTitle: 'Co-founder & CTO at Fume',
   url: 'https://marcbickel.ch',
   sameAs: [
-    'https://linkedin.com/in/marcbickel',
+    'https://www.linkedin.com/in/marc-bickel/',
     'https://github.com/marcbickel',
   ],
   knowsAbout: ['Software Engineering', 'Web3', 'Startups'],
