@@ -12,7 +12,7 @@ export default function Hero() {
       
       <ScrollReveal delay={400}>
         <p className="text-xl opacity-80 leading-relaxed max-w-xl">
-          I build things. Co-founder and CTO at{' '}
+          I like building things and solving hard problems. Co-founder and CTO at{' '}
           <a href="https://fume.finance" target="_blank" rel="noopener noreferrer" className="text-accent hover:opacity-80 transition-opacity">
             Fume
           </a>.
