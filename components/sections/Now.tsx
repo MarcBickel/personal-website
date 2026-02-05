@@ -1,5 +1,14 @@
 import { ScrollReveal } from '@/components/ScrollReveal'
-import { HackerText } from '@/components/HackerText'
+
+const languages = [
+  { name: 'French', flag: '🇫🇷', level: 'Native' },
+  { name: 'Catalan', flag: '🇦🇩', level: 'Native' },
+  { name: 'English', flag: '🇬🇧', level: 'Fluent' },
+  { name: 'Spanish', flag: '🇪🇸', level: 'Fluent' },
+  { name: 'German', flag: '🇩🇪', level: 'Professional' },
+  { name: 'Italian', flag: '🇮🇹', level: 'Learning' },
+  { name: 'Russian', flag: '🇷🇺', level: 'Learning' },
+]
 
 export default function Now() {
   const items = [
@@ -22,7 +31,7 @@ export default function Now() {
         </div>
       </ScrollReveal>
 
-      <div className="space-y-4">
+      <div className="space-y-4 mb-8">
         {items.map((item, index) => (
           <ScrollReveal key={item.label} delay={index * 100}>
             <div className="group flex items-start gap-4 p-4 rounded-lg hover:bg-foreground/5 transition-colors cursor-default">
@@ -35,6 +44,25 @@ export default function Now() {
           </ScrollReveal>
         ))}
       </div>
+
+      {/* Languages subsection */}
+      <ScrollReveal delay={500}>
+        <div className="pt-6 border-t border-foreground/10">
+          <h3 className="text-sm font-semibold mb-3 opacity-60 font-mono">Languages</h3>
+          <div className="flex flex-wrap gap-3">
+            {languages.map((lang) => (
+              <div
+                key={lang.name}
+                className="flex items-center gap-1.5 px-2 py-1 rounded bg-foreground/5 text-sm"
+                title={`${lang.name} — ${lang.level}`}
+              >
+                <span>{lang.flag}</span>
+                <span className="opacity-80">{lang.name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </ScrollReveal>
     </section>
   )
 }
