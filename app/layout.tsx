@@ -1,7 +1,5 @@
 import type { Metadata } from 'next'
-import { ThemeProvider } from 'next-themes'
-import Nav from '@/components/Nav'
-import { AnimatedBackground } from '@/components/AnimatedBackground'
+import ClientLayout from '@/components/ClientLayout'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -58,13 +56,9 @@ export default function RootLayout({
         />
       </head>
       <body className="font-sans antialiased relative">
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
-          <AnimatedBackground />
-          <Nav />
-          <main className="max-w-2xl mx-auto px-6 py-12 relative z-10">
-            {children}
-          </main>
-        </ThemeProvider>
+        <ClientLayout>
+          {children}
+        </ClientLayout>
       </body>
     </html>
   )

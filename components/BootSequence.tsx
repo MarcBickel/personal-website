@@ -3,17 +3,25 @@
 import { useState, useEffect } from 'react'
 
 const bootLines = [
+  { text: '[OK] BIOS date 02/05/26 10:15:32...', delay: 100 },
+  { text: '[OK] CPU: ARM64 @ 3.2GHz', delay: 150 },
+  { text: '[OK] Memory Test: 32768MB OK', delay: 200 },
   { text: '[OK] Initializing kernel...', delay: 100 },
-  { text: '[OK] Loading system modules...', delay: 200 },
-  { text: '[OK] Mounting virtual filesystem...', delay: 150 },
+  { text: '[OK] Loading system modules...', delay: 150 },
+  { text: '[OK] Mounting virtual filesystem...', delay: 100 },
+  { text: '[OK] Detecting primary display...', delay: 150 },
   { text: '[OK] Starting network services...', delay: 100 },
-  { text: '[OK] Loading user profile: marc-bickel...', delay: 200 },
-  { text: '[OK] Mounting experiences...', delay: 150 },
-  { text: '[OK] Loading projects...', delay: 100 },
-  { text: '[OK] Initializing contact module...', delay: 150 },
-  { text: '[OK] Starting GUI...', delay: 200 },
+  { text: '[OK] Establishing secure connection...', delay: 200 },
+  { text: '[OK] Loading user profile: marc-bickel...', delay: 150 },
+  { text: '[OK] Mounting /experiences...', delay: 100 },
+  { text: '[OK] Loading /projects...', delay: 150 },
+  { text: '[OK] Loading /writing...', delay: 100 },
+  { text: '[OK] Loading /education...', delay: 150 },
+  { text: '[OK] Initializing contact module...', delay: 100 },
+  { text: '[OK] Compiling assets...', delay: 200 },
+  { text: '[OK] Starting GUI...', delay: 150 },
   { text: '', delay: 100 },
-  { text: 'Welcome to marc-bickel.ch', delay: 0, highlight: true },
+  { text: 'Welcome to marc-bickel.ch v2.0', delay: 0, highlight: true },
   { text: 'Type "help" for available commands', delay: 0, dim: true },
 ]
 
@@ -34,7 +42,7 @@ export function BootSequence({ onComplete }: { onComplete?: () => void }) {
         currentLine++
         
         if (currentLine === bootLines.length && onComplete) {
-          setTimeout(onComplete, 500)
+          setTimeout(onComplete, 800)
         }
       }, totalDelay)
       timeouts.push(timeout)
@@ -51,30 +59,32 @@ export function BootSequence({ onComplete }: { onComplete?: () => void }) {
   }, [onComplete])
 
   return (
-    <div className="font-mono text-sm space-y-1">
-      {visibleLines.map((lineIndex) => {
-        const line = bootLines[lineIndex]
-        return (
-          <div
-            key={lineIndex}
-            className={`${
-              line.highlight
-                ? 'text-accent font-semibold'
-                : line.dim
-                ? 'opacity-50'
-                : ''
-            }`}
-          >
-            {line.text}
+    <div className="fixed inset-0 z-[100] bg-background flex items-center justify-center">
+      <div className="font-mono text-base md:text-lg space-y-2 w-full max-w-3xl px-6">
+        {visibleLines.map((lineIndex) => {
+          const line = bootLines[lineIndex]
+          return (
+            <div
+              key={lineIndex}
+              className={`${
+                line.highlight
+                  ? 'text-accent font-bold text-lg md:text-xl'
+                  : line.dim
+                  ? 'opacity-50'
+                  : ''
+              }`}
+            >
+              {line.text}
+            </div>
+          )
+        })}
+        {visibleLines.length < bootLines.length && (
+          <div className="flex items-center gap-2 mt-4">
+            <span className={showCursor ? 'opacity-100' : 'opacity-0'}>❯</span>
+            <span className="animate-pulse">_</span>
           </div>
-        )
-      })}
-      {visibleLines.length < bootLines.length && (
-        <div className="flex items-center gap-2">
-          <span className={showCursor ? 'opacity-100' : 'opacity-0'}>❯</span>
-          <span className="animate-pulse">_</span>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   )
 }
