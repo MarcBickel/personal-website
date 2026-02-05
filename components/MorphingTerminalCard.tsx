@@ -63,10 +63,10 @@ export function MorphingTerminalCard({ title, period, description, tags = [], li
           transformOrigin: 'center top',
           opacity: isVisible ? 1 : 0,
           boxShadow: isAnimating 
-            ? '0 0 30px rgba(37, 99, 235, 0.3), 0 0 60px rgba(37, 99, 235, 0.1)' 
+            ? '0 0 20px rgba(37, 99, 235, 0.15), 0 0 40px rgba(37, 99, 235, 0.05)' 
             : 'none',
           borderColor: isAnimating 
-            ? 'rgba(37, 99, 235, 0.5)' 
+            ? 'rgba(37, 99, 235, 0.3)' 
             : 'rgba(255, 255, 255, 0.1)',
         }}
         onMouseEnter={() => setIsGlitching(true)}
@@ -74,9 +74,9 @@ export function MorphingTerminalCard({ title, period, description, tags = [], li
       >
         {/* Glitch flash overlay */}
         <div 
-          className="absolute inset-0 pointer-events-none z-20 transition-opacity duration-200"
+          className="absolute inset-0 pointer-events-none z-20 transition-opacity duration-300"
           style={{
-            background: 'linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.1), transparent)',
+            background: 'linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.05), transparent)',
             opacity: isAnimating ? 1 : 0,
           }}
         />
