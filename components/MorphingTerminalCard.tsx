@@ -16,6 +16,7 @@ export function MorphingTerminalCard({ title, period, description, tags = [], li
   const [isGlitching, setIsGlitching] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
   const [hasIntersected, setHasIntersected] = useState(false)
+  const [isAnimating, setIsAnimating] = useState(false)
   const { isBooting } = useBoot()
   const ref = useRef<HTMLDivElement>(null)
   
@@ -42,7 +43,10 @@ export function MorphingTerminalCard({ title, period, description, tags = [], li
   // Trigger morph animation when boot is done and element is intersected
   useEffect(() => {
     if (!isBooting && hasIntersected) {
-      const timeout = setTimeout(() => setIsVisible(true), 100)
+      const timeout = setTimeout(() => {
+        setIsAnimating(true)
+        setIsVisible(true)
+      }, 100)
       return () => clearTimeout(timeout)
     }
   }, [isBooting, hasIntersected])
@@ -53,17 +57,32 @@ export function MorphingTerminalCard({ title, period, description, tags = [], li
         href={link}
         target={link ? "_blank" : undefined}
         rel={link ? "noopener noreferrer" : undefined}
-        className={`block group rounded-lg border border-foreground/20 overflow-hidden hover:border-accent/50 transition-all duration-700 bg-background ${link ? 'cursor-pointer' : ''}`}
+        className={`block group rounded-lg border overflow-hidden hover:border-accent/50 transition-all duration-1000 bg-background ${link ? 'cursor-pointer' : ''}`}
         style={{
-          transform: isVisible ? 'scaleY(1)' : 'scaleY(0)',
-          transformOrigin: 'top',
+          transform: isVisible ? 'scale(1) rotateX(0deg)' : 'scale(0.8) rotateX(-15deg)',
+          transformOrigin: 'center top',
           opacity: isVisible ? 1 : 0,
+          boxShadow: isAnimating 
+            ? '0 0 30px rgba(37, 99, 235, 0.3), 0 0 60px rgba(37, 99, 235, 0.1)' 
+            : 'none',
+          borderColor: isAnimating 
+            ? 'rgba(37, 99, 235, 0.5)' 
+            : 'rgba(255, 255, 255, 0.1)',
         }}
         onMouseEnter={() => setIsGlitching(true)}
         onMouseLeave={() => setIsGlitching(false)}
       >
+        {/* Glitch flash overlay */}
+        <div 
+          className="absolute inset-0 pointer-events-none z-20 transition-opacity duration-200"
+          style={{
+            background: 'linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.1), transparent)',
+            opacity: isAnimating ? 1 : 0,
+          }}
+        />
+
         {/* Terminal header with dots */}
-        <div className="flex items-center gap-2 px-4 py-3 bg-foreground/5 border-b border-foreground/10"
+        <div className="relative flex items-center gap-2 px-4 py-3 bg-foreground/5 border-b border-foreground/10 z-10"
         >
           <div className="flex gap-1.5">
             <div className="w-3 h-3 rounded-full bg-red-500/80" />
@@ -83,7 +102,7 @@ export function MorphingTerminalCard({ title, period, description, tags = [], li
         </div>
         
         {/* Terminal content */}
-        <div className="p-4 font-mono text-sm"
+        <div className="relative p-4 font-mono text-sm z-10"
         >
           <div className="flex items-start gap-2 mb-3 opacity-60"
           >
