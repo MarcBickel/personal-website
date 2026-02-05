@@ -61,7 +61,7 @@ export default function Writing() {
       <div className="space-y-4">
         {publications.map((pub) => (
           <ScrollReveal key={pub.title}>
-            <div className="p-4 rounded-lg bg-foreground/5 border border-foreground/10 hover:border-accent/30 transition-all">
+            <div className="p-4 rounded-lg bg-background border border-foreground/10 hover:border-accent/30 transition-all">
               <h4 className="font-medium mb-1">{pub.title}</h4>
               <p className="text-sm opacity-60 font-mono">
                 {pub.authors} • {pub.venue} • {pub.year}

@@ -12,7 +12,7 @@ export default function Contact() {
       <ScrollTypingHeader sectionName="Contact" />
 
       <ScrollReveal>
-        <div className="p-6 rounded-lg bg-foreground/5 border border-foreground/10 font-mono">
+        <div className="p-6 rounded-lg bg-background border border-foreground/10 font-mono">
           <div className="flex items-center gap-2 mb-4">
             <span className="text-accent">$</span>
             <span className="opacity-80">email</span>

@@ -54,7 +54,7 @@ export default function Now() {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         {languages.map((lang, index) => (
           <ScrollReveal key={lang.name} delay={index * 50}>
-            <div className="p-3 rounded-lg bg-foreground/5 border border-foreground/10 hover:border-accent/30 transition-colors">
+            <div className="p-3 rounded-lg bg-background border border-foreground/10 hover:border-accent/30 transition-colors">
               <div className="flex justify-between items-center mb-1.5">
                 <span className="font-medium flex items-center gap-2 text-sm">
                   <span>{lang.flag}</span>

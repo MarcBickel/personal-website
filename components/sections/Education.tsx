@@ -35,7 +35,7 @@ export default function Education() {
       <div className="space-y-8">
         {education.map((edu) => (
           <ScrollReveal key={edu.school}>
-            <div className="rounded-lg border border-foreground/20 overflow-hidden">
+            <div className="rounded-lg border border-foreground/20 overflow-hidden bg-background">
               {/* Header */}
               <div className="flex items-center gap-2 px-4 py-3 bg-foreground/5 border-b border-foreground/10">
                 <div className="flex gap-1.5">
