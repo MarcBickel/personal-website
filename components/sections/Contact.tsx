@@ -1,3 +1,4 @@
+import { TerminalCard } from '@/components/TerminalCard'
 import { ScrollReveal } from '@/components/ScrollReveal'
 
 export default function Contact() {
@@ -15,19 +16,12 @@ export default function Contact() {
       </ScrollReveal>
 
       <ScrollReveal delay={200}>
-        <div className="p-6 rounded-lg bg-foreground/5 border border-foreground/10 font-mono">
-          <div className="flex items-center gap-2 mb-4">
-            <span className="text-accent">$</span>
-            <span className="opacity-80">email</span>
-          </div>
-          
-          <a
-            href="mailto:me@marcbickel.ch"
-            className="block text-lg hover:text-accent transition-colors ml-6"
-          >
-            me@marcbickel.ch
-          </a>
-        </div>
+        <TerminalCard
+          title="Contact"
+          description="me@marcbickel.ch"
+          tags={[]}
+          link="mailto:me@marcbickel.ch"
+        />
       </ScrollReveal>
 
       <ScrollReveal delay={400}>
