@@ -20,7 +20,7 @@ export default function Now() {
   ]
 
   return (
-    <section id="now" className="py-16 border-t border-foreground/10">
+    <section id="now" className="pt-8 pb-16 border-t border-foreground/10">
       <div className="flex items-center justify-between mb-4">
         <ScrollTypingHeader sectionName="Now" />
         <ScrollReveal>
