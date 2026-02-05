@@ -3,7 +3,7 @@ import { ScrollReveal } from '@/components/ScrollReveal'
 
 export default function Hero() {
   return (
-    <section id="top" className="py-24 relative bg-background rounded-lg px-6 -mx-6">
+    <section id="top" className="py-24 relative">
       <ScrollReveal>
         <h1 className="text-5xl md:text-6xl font-bold mb-6 tracking-tight">
           <HackerText text="Marc Bickel" delay={200} />

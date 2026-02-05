@@ -73,7 +73,7 @@ export function ScrollTypingHeader({ sectionName, command }: ScrollTypingHeaderP
   }, [hasStarted, showCursor])
 
   return (
-    <div ref={ref} className="mb-8">
+    <div ref={ref} className="mb-2">
       <div className="font-mono text-sm md:text-base text-accent/80">
         <span className="text-accent mr-2">$</span>
         <span>{displayText}</span>

@@ -21,7 +21,7 @@ export default function Now() {
 
   return (
     <section id="now" className="py-16 border-t border-foreground/10">
-      <div className="flex items-center justify-between mb-8">
+      <div className="flex items-center justify-between mb-4">
         <ScrollTypingHeader sectionName="Now" />
         <ScrollReveal>
           <span className="text-xs opacity-50 font-mono">
@@ -30,7 +30,7 @@ export default function Now() {
         </ScrollReveal>
       </div>
 
-      <div className="space-y-4 mb-10">
+      <div className="space-y-4 mb-8">
         {items.map((item, index) => (
           <ScrollReveal key={item.label} delay={index * 100}>
             <div className="group flex items-start gap-4 p-4 rounded-lg hover:bg-foreground/5 transition-colors cursor-default">
