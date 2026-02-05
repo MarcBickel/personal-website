@@ -26,9 +26,8 @@ export function AnimatedBackground() {
     const handleMouseMove = (e: MouseEvent) => {
       mouseX = e.clientX
       mouseY = e.clientY
-      // Reset pulse on mouse move
       pulseRadius = 0
-      pulseOpacity = 0.4
+      pulseOpacity = 0.6
     }
 
     resize()
@@ -36,20 +35,40 @@ export function AnimatedBackground() {
     window.addEventListener('mousemove', handleMouseMove)
 
     // Grid settings
-    const gridSize = 50
-    const dotSize = 1
-    const maxDistance = 150
+    const gridSize = 60
+    const dotSize = 2
+    const maxDistance = 200
 
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
 
       // Animate pulse radius
       if (pulseOpacity > 0) {
-        pulseRadius += 2
-        pulseOpacity -= 0.008
+        pulseRadius += 3
+        pulseOpacity -= 0.01
       }
 
-      // Draw grid dots
+      // Draw grid lines (always visible)
+      ctx.strokeStyle = 'rgba(37, 99, 235, 0.08)'
+      ctx.lineWidth = 1
+      
+      // Vertical lines
+      for (let x = 0; x < canvas.width; x += gridSize) {
+        ctx.beginPath()
+        ctx.moveTo(x, 0)
+        ctx.lineTo(x, canvas.height)
+        ctx.stroke()
+      }
+      
+      // Horizontal lines
+      for (let y = 0; y < canvas.height; y += gridSize) {
+        ctx.beginPath()
+        ctx.moveTo(0, y)
+        ctx.lineTo(canvas.width, y)
+        ctx.stroke()
+      }
+
+      // Draw grid dots with mouse interaction
       for (let x = 0; x < canvas.width; x += gridSize) {
         for (let y = 0; y < canvas.height; y += gridSize) {
           const distance = Math.sqrt(
@@ -57,23 +76,33 @@ export function AnimatedBackground() {
           )
           
           // Pulsing effect near mouse
-          const pulseEffect = pulseOpacity > 0 && Math.abs(distance - pulseRadius) < 30
-            ? (1 - Math.abs(distance - pulseRadius) / 30) * pulseOpacity
+          const pulseEffect = pulseOpacity > 0 && Math.abs(distance - pulseRadius) < 40
+            ? (1 - Math.abs(distance - pulseRadius) / 40) * pulseOpacity
             : 0
           
-          const baseOpacity = Math.max(0, 1 - distance / maxDistance) * 0.3
-          const totalOpacity = Math.min(0.8, baseOpacity + pulseEffect)
+          // Base visibility - dots are always somewhat visible
+          const baseOpacity = 0.15 + Math.max(0, 1 - distance / maxDistance) * 0.5
+          const totalOpacity = Math.min(1, baseOpacity + pulseEffect)
           
+          // Draw dot
           ctx.beginPath()
-          ctx.arc(x, y, dotSize + totalOpacity * 3, 0, Math.PI * 2)
+          ctx.arc(x, y, dotSize + totalOpacity * 4, 0, Math.PI * 2)
           ctx.fillStyle = `rgba(37, 99, 235, ${totalOpacity})`
           ctx.fill()
+          
+          // Draw glow for bright dots
+          if (totalOpacity > 0.5) {
+            ctx.beginPath()
+            ctx.arc(x, y, (dotSize + totalOpacity * 4) * 2, 0, Math.PI * 2)
+            ctx.fillStyle = `rgba(37, 99, 235, ${totalOpacity * 0.3})`
+            ctx.fill()
+          }
         }
       }
 
-      // Draw connecting lines near mouse
-      ctx.strokeStyle = `rgba(37, 99, 235, 0.1)`
-      ctx.lineWidth = 0.5
+      // Draw connecting lines near mouse (stronger)
+      ctx.strokeStyle = `rgba(37, 99, 235, 0.2)`
+      ctx.lineWidth = 1
       
       for (let x = 0; x < canvas.width; x += gridSize) {
         for (let y = 0; y < canvas.height; y += gridSize) {
@@ -82,6 +111,8 @@ export function AnimatedBackground() {
           )
           
           if (distance < maxDistance) {
+            const lineOpacity = (1 - distance / maxDistance) * 0.3
+            ctx.strokeStyle = `rgba(37, 99, 235, ${lineOpacity})`
             ctx.beginPath()
             ctx.moveTo(x, y)
             ctx.lineTo(mouseX, mouseY)
@@ -95,7 +126,14 @@ export function AnimatedBackground() {
         ctx.beginPath()
         ctx.arc(mouseX, mouseY, pulseRadius, 0, Math.PI * 2)
         ctx.strokeStyle = `rgba(37, 99, 235, ${pulseOpacity})`
-        ctx.lineWidth = 1
+        ctx.lineWidth = 2
+        ctx.stroke()
+        
+        // Inner glow
+        ctx.beginPath()
+        ctx.arc(mouseX, mouseY, pulseRadius * 0.8, 0, Math.PI * 2)
+        ctx.strokeStyle = `rgba(37, 99, 235, ${pulseOpacity * 0.5})`
+        ctx.lineWidth = 4
         ctx.stroke()
       }
 
@@ -115,7 +153,7 @@ export function AnimatedBackground() {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 pointer-events-none z-0"
-      style={{ opacity: 0.6 }}
+      style={{ opacity: 1 }}
     />
   )
 }
