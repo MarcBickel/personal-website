@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 interface GlitchTextProps {
   text: string
@@ -16,9 +16,12 @@ export function GlitchText({ text, className = '', isGlitching: externalGlitchin
 
   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*'
 
-  const triggerGlitch = () => {
-    if (isGlitching) return
-    setInternalGlitching(true)
+  // Trigger glitch effect when isGlitching changes to true
+  useEffect(() => {
+    if (!isGlitching) {
+      setDisplayText(text)
+      return
+    }
 
     let iteration = 0
     const originalText = text
@@ -38,19 +41,17 @@ export function GlitchText({ text, className = '', isGlitching: externalGlitchin
 
       if (iteration >= originalText.length) {
         clearInterval(interval)
-        setInternalGlitching(false)
         setDisplayText(originalText)
       }
 
       iteration += 1 / 2
     }, 30)
-  }
+
+    return () => clearInterval(interval)
+  }, [isGlitching, text])
 
   return (
-    <span
-      className={`relative inline-block ${className}`}
-      onMouseEnter={externalGlitching === undefined ? triggerGlitch : undefined}
-    >
+    <span className={`relative inline-block ${className}`}>
       <span className="relative z-10">{displayText}</span>
       {isGlitching && (
         <>
