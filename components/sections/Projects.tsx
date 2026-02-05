@@ -1,5 +1,5 @@
-import { TerminalCard } from '@/components/TerminalCard'
-import { ScrollReveal } from '@/components/ScrollReveal'
+import { MorphingTerminalCard } from '@/components/MorphingTerminalCard'
+import { ScrollTypingHeader } from '@/components/ScrollTypingHeader'
 
 const projects = [
   {
@@ -14,23 +14,18 @@ const projects = [
 export default function Projects() {
   return (
     <section id="projects" className="py-16 border-t border-foreground/10">
-      <ScrollReveal>
-        <h2 className="text-2xl font-semibold mb-8 font-mono">
-          <span className="text-accent">#</span> Projects
-        </h2>
-      </ScrollReveal>
+      <ScrollTypingHeader sectionName="Projects" />
 
       <div className="grid gap-4">
-        {projects.map((project, index) => (
-          <ScrollReveal key={project.title} delay={index * 100}>
-            <TerminalCard
-              title={project.title}
-              period={project.period}
-              description={project.description}
-              tags={project.tags}
-              link={project.link}
-            />
-          </ScrollReveal>
+        {projects.map((project) => (
+          <MorphingTerminalCard
+            key={project.title}
+            title={project.title}
+            period={project.period}
+            description={project.description}
+            tags={project.tags}
+            link={project.link}
+          />
         ))}
       </div>
     </section>

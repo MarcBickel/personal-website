@@ -1,9 +1,10 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 export function AnimatedBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const scrollYRef = useRef(0)
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -17,6 +18,7 @@ export function AnimatedBackground() {
     let mouseY = 0
     let pulseRadius = 0
     let pulseOpacity = 0
+    let targetScrollY = 0
 
     const resize = () => {
       canvas.width = window.innerWidth
@@ -30,9 +32,14 @@ export function AnimatedBackground() {
       pulseOpacity = 0.6
     }
 
+    const handleScroll = () => {
+      targetScrollY = window.scrollY
+    }
+
     resize()
     window.addEventListener('resize', resize)
     window.addEventListener('mousemove', handleMouseMove)
+    window.addEventListener('scroll', handleScroll, { passive: true })
 
     // Grid settings
     const gridSize = 60
@@ -40,7 +47,13 @@ export function AnimatedBackground() {
     const maxDistance = 200
 
     const draw = () => {
+      // Smooth parallax interpolation
+      scrollYRef.current += (targetScrollY - scrollYRef.current) * 0.1
+
       ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+      // Parallax offset (grid moves at 0.3x scroll speed)
+      const parallaxY = scrollYRef.current * 0.3
 
       // Animate pulse radius
       if (pulseOpacity > 0) {
@@ -48,7 +61,7 @@ export function AnimatedBackground() {
         pulseOpacity -= 0.01
       }
 
-      // Draw grid lines (always visible)
+      // Draw grid lines (always visible) with parallax
       ctx.strokeStyle = 'rgba(37, 99, 235, 0.08)'
       ctx.lineWidth = 1
       
@@ -60,17 +73,18 @@ export function AnimatedBackground() {
         ctx.stroke()
       }
       
-      // Horizontal lines
-      for (let y = 0; y < canvas.height; y += gridSize) {
+      // Horizontal lines with parallax offset
+      const startY = -(parallaxY % gridSize)
+      for (let y = startY; y < canvas.height; y += gridSize) {
         ctx.beginPath()
         ctx.moveTo(0, y)
         ctx.lineTo(canvas.width, y)
         ctx.stroke()
       }
 
-      // Draw grid dots with mouse interaction
+      // Draw grid dots with mouse interaction and parallax
       for (let x = 0; x < canvas.width; x += gridSize) {
-        for (let y = 0; y < canvas.height; y += gridSize) {
+        for (let y = startY; y < canvas.height; y += gridSize) {
           const distance = Math.sqrt(
             Math.pow(x - mouseX, 2) + Math.pow(y - mouseY, 2)
           )
@@ -101,11 +115,8 @@ export function AnimatedBackground() {
       }
 
       // Draw connecting lines near mouse (stronger)
-      ctx.strokeStyle = `rgba(37, 99, 235, 0.2)`
-      ctx.lineWidth = 1
-      
       for (let x = 0; x < canvas.width; x += gridSize) {
-        for (let y = 0; y < canvas.height; y += gridSize) {
+        for (let y = startY; y < canvas.height; y += gridSize) {
           const distance = Math.sqrt(
             Math.pow(x - mouseX, 2) + Math.pow(y - mouseY, 2)
           )
@@ -113,6 +124,7 @@ export function AnimatedBackground() {
           if (distance < maxDistance) {
             const lineOpacity = (1 - distance / maxDistance) * 0.3
             ctx.strokeStyle = `rgba(37, 99, 235, ${lineOpacity})`
+            ctx.lineWidth = 1
             ctx.beginPath()
             ctx.moveTo(x, y)
             ctx.lineTo(mouseX, mouseY)
@@ -129,7 +141,6 @@ export function AnimatedBackground() {
         ctx.lineWidth = 2
         ctx.stroke()
         
-        // Inner glow
         ctx.beginPath()
         ctx.arc(mouseX, mouseY, pulseRadius * 0.8, 0, Math.PI * 2)
         ctx.strokeStyle = `rgba(37, 99, 235, ${pulseOpacity * 0.5})`
@@ -145,6 +156,7 @@ export function AnimatedBackground() {
     return () => {
       window.removeEventListener('resize', resize)
       window.removeEventListener('mousemove', handleMouseMove)
+      window.removeEventListener('scroll', handleScroll)
       cancelAnimationFrame(animationId)
     }
   }, [])

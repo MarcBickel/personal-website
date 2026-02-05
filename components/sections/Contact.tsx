@@ -1,3 +1,4 @@
+import { ScrollTypingHeader } from '@/components/ScrollTypingHeader'
 import { ScrollReveal } from '@/components/ScrollReveal'
 
 export default function Contact() {
@@ -8,13 +9,9 @@ export default function Contact() {
 
   return (
     <section id="contact" className="py-16 border-t border-foreground/10">
-      <ScrollReveal>
-        <h2 className="text-2xl font-semibold mb-8 font-mono">
-          <span className="text-accent">#</span> Get in touch
-        </h2>
-      </ScrollReveal>
+      <ScrollTypingHeader sectionName="Contact" />
 
-      <ScrollReveal delay={200}>
+      <ScrollReveal>
         <div className="p-6 rounded-lg bg-foreground/5 border border-foreground/10 font-mono">
           <div className="flex items-center gap-2 mb-4">
             <span className="text-accent">$</span>
@@ -30,7 +27,7 @@ export default function Contact() {
         </div>
       </ScrollReveal>
 
-      <ScrollReveal delay={400}>
+      <ScrollReveal delay={100}>
         <div className="flex gap-4 mt-6">
           {links.map((link) => (
             <a

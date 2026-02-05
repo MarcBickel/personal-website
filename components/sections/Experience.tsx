@@ -1,5 +1,5 @@
-import { TerminalCard } from '@/components/TerminalCard'
-import { ScrollReveal } from '@/components/ScrollReveal'
+import { MorphingTerminalCard } from '@/components/MorphingTerminalCard'
+import { ScrollTypingHeader } from '@/components/ScrollTypingHeader'
 
 const experiences = [
   {
@@ -50,23 +50,18 @@ const experiences = [
 export default function Experience() {
   return (
     <section id="experience" className="py-16 border-t border-foreground/10">
-      <ScrollReveal>
-        <h2 className="text-2xl font-semibold mb-8 font-mono">
-          <span className="text-accent">#</span> Experience
-        </h2>
-      </ScrollReveal>
+      <ScrollTypingHeader sectionName="Experience" />
 
       <div className="grid gap-4">
-        {experiences.map((exp, index) => (
-          <ScrollReveal key={exp.title} delay={index * 100}>
-            <TerminalCard
-              title={exp.title}
-              period={exp.period}
-              description={exp.description}
-              tags={exp.tags}
-              link={exp.link}
-            />
-          </ScrollReveal>
+        {experiences.map((exp) => (
+          <MorphingTerminalCard
+            key={exp.title}
+            title={exp.title}
+            period={exp.period}
+            description={exp.description}
+            tags={exp.tags}
+            link={exp.link}
+          />
         ))}
       </div>
     </section>

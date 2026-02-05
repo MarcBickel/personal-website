@@ -1,3 +1,4 @@
+import { ScrollTypingHeader } from '@/components/ScrollTypingHeader'
 import { ScrollReveal } from '@/components/ScrollReveal'
 
 const education = [
@@ -29,15 +30,11 @@ const education = [
 export default function Education() {
   return (
     <section id="education" className="py-16 border-t border-foreground/10">
-      <ScrollReveal>
-        <h2 className="text-2xl font-semibold mb-8 font-mono">
-          <span className="text-accent">#</span> Education
-        </h2>
-      </ScrollReveal>
+      <ScrollTypingHeader sectionName="Education" />
 
       <div className="space-y-8">
-        {education.map((edu, index) => (
-          <ScrollReveal key={edu.school} delay={index * 100}>
+        {education.map((edu) => (
+          <ScrollReveal key={edu.school}>
             <div className="rounded-lg border border-foreground/20 overflow-hidden">
               {/* Header */}
               <div className="flex items-center gap-2 px-4 py-3 bg-foreground/5 border-b border-foreground/10">

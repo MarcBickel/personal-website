@@ -1,3 +1,4 @@
+import { ScrollTypingHeader } from '@/components/ScrollTypingHeader'
 import { ScrollReveal } from '@/components/ScrollReveal'
 
 const languages = [
@@ -20,16 +21,14 @@ export default function Now() {
 
   return (
     <section id="now" className="py-16 border-t border-foreground/10">
-      <ScrollReveal>
-        <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl font-semibold font-mono">
-            <span className="text-accent">#</span> Now
-          </h2>
+      <div className="flex items-center justify-between mb-8">
+        <ScrollTypingHeader sectionName="Now" />
+        <ScrollReveal>
           <span className="text-xs opacity-50 font-mono">
             Updated: February 2026
           </span>
-        </div>
-      </ScrollReveal>
+        </ScrollReveal>
+      </div>
 
       <div className="space-y-4 mb-10">
         {items.map((item, index) => (
@@ -46,7 +45,7 @@ export default function Now() {
       </div>
 
       {/* Languages subsection */}
-      <ScrollReveal delay={500}>
+      <ScrollReveal>
         <h3 className="text-lg font-semibold mb-4 font-mono opacity-80">
           <span className="text-accent">##</span> Languages
         </h3>
@@ -54,7 +53,7 @@ export default function Now() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         {languages.map((lang, index) => (
-          <ScrollReveal key={lang.name} delay={600 + index * 50}>
+          <ScrollReveal key={lang.name} delay={index * 50}>
             <div className="p-3 rounded-lg bg-foreground/5 border border-foreground/10 hover:border-accent/30 transition-colors">
               <div className="flex justify-between items-center mb-1.5">
                 <span className="font-medium flex items-center gap-2 text-sm">
