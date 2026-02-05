@@ -5,17 +5,20 @@ import { useState } from 'react'
 interface GlitchTextProps {
   text: string
   className?: string
+  isGlitching?: boolean
 }
 
-export function GlitchText({ text, className = '' }: GlitchTextProps) {
-  const [isGlitching, setIsGlitching] = useState(false)
+export function GlitchText({ text, className = '', isGlitching: externalGlitching }: GlitchTextProps) {
+  const [internalGlitching, setInternalGlitching] = useState(false)
   const [displayText, setDisplayText] = useState(text)
+
+  const isGlitching = externalGlitching !== undefined ? externalGlitching : internalGlitching
 
   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*'
 
   const triggerGlitch = () => {
     if (isGlitching) return
-    setIsGlitching(true)
+    setInternalGlitching(true)
 
     let iteration = 0
     const originalText = text
@@ -35,7 +38,7 @@ export function GlitchText({ text, className = '' }: GlitchTextProps) {
 
       if (iteration >= originalText.length) {
         clearInterval(interval)
-        setIsGlitching(false)
+        setInternalGlitching(false)
         setDisplayText(originalText)
       }
 
@@ -46,7 +49,7 @@ export function GlitchText({ text, className = '' }: GlitchTextProps) {
   return (
     <span
       className={`relative inline-block ${className}`}
-      onMouseEnter={triggerGlitch}
+      onMouseEnter={externalGlitching === undefined ? triggerGlitch : undefined}
     >
       <span className="relative z-10">{displayText}</span>
       {isGlitching && (

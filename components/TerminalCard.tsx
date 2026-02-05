@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import { GlitchText } from './GlitchText'
 
 interface TerminalCardProps {
@@ -11,6 +12,7 @@ interface TerminalCardProps {
 }
 
 export function TerminalCard({ title, period, description, tags = [], link }: TerminalCardProps) {
+  const [isGlitching, setIsGlitching] = useState(false)
   const CardWrapper = link ? 'a' : 'div'
   
   const filename = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
@@ -21,6 +23,8 @@ export function TerminalCard({ title, period, description, tags = [], link }: Te
       target={link ? "_blank" : undefined}
       rel={link ? "noopener noreferrer" : undefined}
       className={`block group rounded-lg border border-foreground/20 overflow-hidden hover:border-accent/50 transition-colors ${link ? 'cursor-pointer' : ''}`}
+      onMouseEnter={() => setIsGlitching(true)}
+      onMouseLeave={() => setIsGlitching(false)}
     >
       {/* Terminal header with dots */}
       <div className="flex items-center gap-2 px-4 py-3 bg-foreground/5 border-b border-foreground/10">
@@ -49,8 +53,8 @@ export function TerminalCard({ title, period, description, tags = [], link }: Te
         </div>
         
         <div className="pl-4 border-l-2 border-accent/20">
-          <h3 className="text-lg font-semibold mb-2">
-            <GlitchText text={title} className="group-hover:text-accent transition-colors" />
+          <h3 className="text-lg font-semibold mb-2 group-hover:text-accent transition-colors">
+            <GlitchText text={title} isGlitching={isGlitching} />
             {period && (
               <span className="font-normal opacity-50 ml-2 text-sm">
                 // {period}
