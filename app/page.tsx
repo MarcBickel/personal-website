@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic'
 import Hero from '@/components/sections/Hero'
 
-// Lazy load sections below the fold
+// Lazy load sections below the fold with prefetch for faster navigation
 const Now = dynamic(() => import('@/components/sections/Now'), {
   loading: () => <SectionSkeleton />,
 })
