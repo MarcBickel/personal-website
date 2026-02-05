@@ -53,7 +53,7 @@ export function MorphingTerminalCard({ title, period, description, tags = [], li
         href={link}
         target={link ? "_blank" : undefined}
         rel={link ? "noopener noreferrer" : undefined}
-        className={`block group rounded-lg border border-foreground/20 overflow-hidden hover:border-accent/50 transition-all duration-700 ${link ? 'cursor-pointer' : ''}`}
+        className={`block group rounded-lg border border-foreground/20 overflow-hidden hover:border-accent/50 transition-all duration-700 bg-background ${link ? 'cursor-pointer' : ''}`}
         style={{
           transform: isVisible ? 'scaleY(1)' : 'scaleY(0)',
           transformOrigin: 'top',

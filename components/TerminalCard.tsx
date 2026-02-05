@@ -22,7 +22,7 @@ export function TerminalCard({ title, period, description, tags = [], link }: Te
       href={link}
       target={link ? "_blank" : undefined}
       rel={link ? "noopener noreferrer" : undefined}
-      className={`block group rounded-lg border border-foreground/20 overflow-hidden hover:border-accent/50 transition-colors ${link ? 'cursor-pointer' : ''}`}
+      className={`block group rounded-lg border border-foreground/20 overflow-hidden hover:border-accent/50 transition-colors bg-background ${link ? 'cursor-pointer' : ''}`}
       onMouseEnter={() => setIsGlitching(true)}
       onMouseLeave={() => setIsGlitching(false)}
     >
