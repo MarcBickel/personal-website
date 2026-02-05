@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { useBoot } from './BootContext'
 
 interface HackerTextProps {
   text: string
@@ -8,19 +9,22 @@ interface HackerTextProps {
   delay?: number
 }
 
-const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&'
+const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%^&'
 
 export function HackerText({ text, className = '', delay = 0 }: HackerTextProps) {
   const [displayText, setDisplayText] = useState(text)
   const [hasStarted, setHasStarted] = useState(false)
+  const { isBooting } = useBoot()
 
+  // Wait for boot to finish, then start after delay
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      setHasStarted(true)
-    }, delay)
-
-    return () => clearTimeout(timeout)
-  }, [delay])
+    if (!isBooting) {
+      const timeout = setTimeout(() => {
+        setHasStarted(true)
+      }, delay)
+      return () => clearTimeout(timeout)
+    }
+  }, [isBooting, delay])
 
   useEffect(() => {
     if (!hasStarted) return
