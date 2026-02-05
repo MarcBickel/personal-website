@@ -3,24 +3,24 @@
 import { useState, useEffect } from 'react'
 
 const bootLines = [
-  { text: '[OK] BIOS date 02/05/26 10:15:32...', delay: 100 },
-  { text: '[OK] CPU: ARM64 @ 3.2GHz', delay: 150 },
-  { text: '[OK] Memory Test: 32768MB OK', delay: 200 },
-  { text: '[OK] Initializing kernel...', delay: 100 },
-  { text: '[OK] Loading system modules...', delay: 150 },
-  { text: '[OK] Mounting virtual filesystem...', delay: 100 },
-  { text: '[OK] Detecting primary display...', delay: 150 },
-  { text: '[OK] Starting network services...', delay: 100 },
-  { text: '[OK] Establishing secure connection...', delay: 200 },
-  { text: '[OK] Loading user profile: marc-bickel...', delay: 150 },
-  { text: '[OK] Mounting /experiences...', delay: 100 },
-  { text: '[OK] Loading /projects...', delay: 150 },
-  { text: '[OK] Loading /writing...', delay: 100 },
-  { text: '[OK] Loading /education...', delay: 150 },
-  { text: '[OK] Initializing contact module...', delay: 100 },
-  { text: '[OK] Compiling assets...', delay: 200 },
-  { text: '[OK] Starting GUI...', delay: 150 },
-  { text: '', delay: 100 },
+  { text: '[OK] BIOS date 02/05/26 10:15:32...', delay: 50 },
+  { text: '[OK] CPU: ARM64 @ 3.2GHz', delay: 50 },
+  { text: '[OK] Memory Test: 32768MB OK', delay: 50 },
+  { text: '[OK] Initializing kernel...', delay: 40 },
+  { text: '[OK] Loading system modules...', delay: 40 },
+  { text: '[OK] Mounting virtual filesystem...', delay: 40 },
+  { text: '[OK] Detecting primary display...', delay: 40 },
+  { text: '[OK] Starting network services...', delay: 40 },
+  { text: '[OK] Establishing secure connection...', delay: 50 },
+  { text: '[OK] Loading user profile: marc-bickel...', delay: 40 },
+  { text: '[OK] Mounting /experiences...', delay: 30 },
+  { text: '[OK] Loading /projects...', delay: 30 },
+  { text: '[OK] Loading /writing...', delay: 30 },
+  { text: '[OK] Loading /education...', delay: 30 },
+  { text: '[OK] Initializing contact module...', delay: 30 },
+  { text: '[OK] Compiling assets...', delay: 40 },
+  { text: '[OK] Starting GUI...', delay: 50 },
+  { text: '', delay: 50 },
   { text: 'Welcome to marc-bickel.ch v2.0', delay: 0, highlight: true },
   { text: 'Type "help" for available commands', delay: 0, dim: true },
 ]
@@ -42,7 +42,7 @@ export function BootSequence({ onComplete }: { onComplete?: () => void }) {
         currentLine++
         
         if (currentLine === bootLines.length && onComplete) {
-          setTimeout(onComplete, 800)
+          setTimeout(onComplete, 500)
         }
       }, totalDelay)
       timeouts.push(timeout)
