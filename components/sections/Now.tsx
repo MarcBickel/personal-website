@@ -1,13 +1,13 @@
 import { ScrollReveal } from '@/components/ScrollReveal'
 
 const languages = [
-  { name: 'French', flag: '🇫🇷', level: 'Native' },
-  { name: 'Catalan', flag: '🇦🇩', level: 'Native' },
-  { name: 'English', flag: '🇬🇧', level: 'Fluent' },
-  { name: 'Spanish', flag: '🇪🇸', level: 'Fluent' },
-  { name: 'German', flag: '🇩🇪', level: 'Professional' },
-  { name: 'Italian', flag: '🇮🇹', level: 'Learning' },
-  { name: 'Russian', flag: '🇷🇺', level: 'Learning' },
+  { name: 'French', flag: '🇫🇷', level: 'Native', proficiency: 100 },
+  { name: 'Catalan', flag: '🇦🇩', level: 'Native', proficiency: 100 },
+  { name: 'English', flag: '🇬🇧', level: 'Fluent', proficiency: 95 },
+  { name: 'Spanish', flag: '🇪🇸', level: 'Fluent', proficiency: 90 },
+  { name: 'German', flag: '🇩🇪', level: 'Professional', proficiency: 80 },
+  { name: 'Italian', flag: '🇮🇹', level: 'Learning', proficiency: 40 },
+  { name: 'Russian', flag: '🇷🇺', level: 'Learning', proficiency: 20 },
 ]
 
 export default function Now() {
@@ -31,7 +31,7 @@ export default function Now() {
         </div>
       </ScrollReveal>
 
-      <div className="space-y-4 mb-8">
+      <div className="space-y-4 mb-10">
         {items.map((item, index) => (
           <ScrollReveal key={item.label} delay={index * 100}>
             <div className="group flex items-start gap-4 p-4 rounded-lg hover:bg-foreground/5 transition-colors cursor-default">
@@ -47,22 +47,32 @@ export default function Now() {
 
       {/* Languages subsection */}
       <ScrollReveal delay={500}>
-        <div className="pt-6 border-t border-foreground/10">
-          <h3 className="text-sm font-semibold mb-3 opacity-60 font-mono">Languages</h3>
-          <div className="flex flex-wrap gap-3">
-            {languages.map((lang) => (
-              <div
-                key={lang.name}
-                className="flex items-center gap-1.5 px-2 py-1 rounded bg-foreground/5 text-sm"
-                title={`${lang.name} — ${lang.level}`}
-              >
-                <span>{lang.flag}</span>
-                <span className="opacity-80">{lang.name}</span>
-              </div>
-            ))}
-          </div>
-        </div>
+        <h3 className="text-lg font-semibold mb-4 font-mono opacity-80">
+          <span className="text-accent">##</span> Languages
+        </h3>
       </ScrollReveal>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        {languages.map((lang, index) => (
+          <ScrollReveal key={lang.name} delay={600 + index * 50}>
+            <div className="p-3 rounded-lg bg-foreground/5 border border-foreground/10 hover:border-accent/30 transition-colors">
+              <div className="flex justify-between items-center mb-1.5">
+                <span className="font-medium flex items-center gap-2 text-sm">
+                  <span>{lang.flag}</span>
+                  <span>{lang.name}</span>
+                </span>
+                <span className="text-xs opacity-60 font-mono">{lang.level}</span>
+              </div>
+              <div className="w-full h-1.5 bg-foreground/10 rounded-full overflow-hidden">
+                <div
+                  className="h-full bg-accent rounded-full transition-all duration-1000 ease-out"
+                  style={{ width: `${lang.proficiency}%` }}
+                />
+              </div>
+            </div>
+          </ScrollReveal>
+        ))}
+      </div>
     </section>
   )
 }
