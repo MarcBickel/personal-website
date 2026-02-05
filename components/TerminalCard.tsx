@@ -1,5 +1,7 @@
 'use client'
 
+import { GlitchText } from './GlitchText'
+
 interface TerminalCardProps {
   title: string
   period?: string
@@ -47,8 +49,8 @@ export function TerminalCard({ title, period, description, tags = [], link }: Te
         </div>
         
         <div className="pl-4 border-l-2 border-accent/20">
-          <h3 className="text-lg font-semibold mb-2 group-hover:text-accent transition-colors">
-            {title}
+          <h3 className="text-lg font-semibold mb-2">
+            <GlitchText text={title} className="group-hover:text-accent transition-colors" />
             {period && (
               <span className="font-normal opacity-50 ml-2 text-sm">
                 // {period}
