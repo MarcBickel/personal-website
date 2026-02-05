@@ -5,13 +5,10 @@ import { ThemeProvider } from 'next-themes'
 import Nav from '@/components/Nav'
 import { AnimatedBackground } from '@/components/AnimatedBackground'
 import { BootSequence } from '@/components/BootSequence'
+import { BootProvider, useBoot } from '@/components/BootContext'
 
-export default function ClientLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
-  const [showBootSequence, setShowBootSequence] = useState(true)
+function BootAwareLayout({ children }: { children: React.ReactNode }) {
+  const { isBooting, setIsBooting } = useBoot()
   const [isClient, setIsClient] = useState(false)
 
   useEffect(() => {
@@ -19,12 +16,12 @@ export default function ClientLayout({
   }, [])
 
   const handleBootComplete = () => {
-    setShowBootSequence(false)
+    setIsBooting(false)
   }
 
   return (
-    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
-      {isClient && showBootSequence && (
+    <>
+      {isClient && isBooting && (
         <BootSequence onComplete={handleBootComplete} />
       )}
       <AnimatedBackground />
@@ -32,6 +29,22 @@ export default function ClientLayout({
       <main className="max-w-2xl mx-auto px-6 py-12 relative z-10">
         {children}
       </main>
+    </>
+  )
+}
+
+export default function ClientLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+      <BootProvider>
+        <BootAwareLayout>
+          {children}
+        </BootAwareLayout>
+      </BootProvider>
     </ThemeProvider>
   )
 }
