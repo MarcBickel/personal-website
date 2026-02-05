@@ -3,6 +3,13 @@ import { ScrollReveal } from '@/components/ScrollReveal'
 
 const experiences = [
   {
+    title: 'Fume',
+    period: '2022–Present',
+    description: 'Co-founder & CTO. Building investment funds without intermediaries. Leading technical vision and company building.',
+    tags: ['TypeScript', 'React', 'Node.js', 'Blockchain'],
+    link: 'https://fume.finance',
+  },
+  {
     title: 'Eranos (formerly AWK Group)',
     period: '2021–2022',
     description: 'Consultant working on projects in Cybersecurity, Banking, Business Analysis, IT Advisory and Project Management. Learned stakeholder management, business modelling and IT architecture.',
@@ -57,6 +64,7 @@ export default function Experience() {
               period={exp.period}
               description={exp.description}
               tags={exp.tags}
+              link={exp.link}
             />
           </ScrollReveal>
         ))}

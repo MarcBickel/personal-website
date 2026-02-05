@@ -1,5 +1,6 @@
 import Hero from '@/components/sections/Hero'
 import Now from '@/components/sections/Now'
+import Languages from '@/components/sections/Languages'
 import Experience from '@/components/sections/Experience'
 import Projects from '@/components/sections/Projects'
 import Writing from '@/components/sections/Writing'
@@ -11,6 +12,7 @@ export default function Home() {
     <>
       <Hero />
       <Now />
+      <Languages />
       <Experience />
       <Projects />
       <Writing />
