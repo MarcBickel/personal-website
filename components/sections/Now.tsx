@@ -13,7 +13,7 @@ const languages = [
 
 export default function Now() {
   const items = [
-    { label: 'Building', value: 'Fume — helping companies navigate their digital transformation.' },
+    { label: 'Building', value: 'Fume — building the next generation of funds.' },
     { label: 'Learning', value: 'Italian, systems thinking' },
     { label: 'Reading', value: 'Currently working through my backlog' },
     { label: 'Thinking about', value: 'How AI changes the way we build software' },
